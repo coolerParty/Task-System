@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AdminCountryComponent extends Component
 {
-   
+   // sample edit
 
 
     public function deleteCountry($id)
