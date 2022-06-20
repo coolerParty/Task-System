@@ -116,10 +116,19 @@
 						@if (Route::has('login'))
 							@auth
 								<li>
-									<a class="profile-pic" href="{{ route('user.profile') }}">
-										<img src="{{ asset('assets/images/profile_thumbnail') }}/{{ Auth::user()->profile->image }}"
-											alt="user-img" width="36" class="img-circle"><span
-											class="text-white font-medium">{{ Auth::user()->name }}</span></a>
+									@if (Auth::user()->profile->image)
+                                        <a class="profile-pic" href="{{ route('user.profile') }}">
+                                            <img src="{{ asset('assets/images/profile_thumbnail') }}/{{ Auth::user()->profile->image }}"
+                                                    alt="user-img" width="36" class="img-circle">
+                                            <span class="text-white font-medium">{{ Auth::user()->name }}</span>
+                                        </a>
+									@else
+                                        <a class="profile-pic" href="{{ route('user.profile') }}">
+                                            <img src="{{ asset('assets/images/profile/default.jpg') }}"
+                                                alt="user-img" width="36" class="img-circle">
+                                            <span class="text-white font-medium">{{ Auth::user()->name }}</span>
+                                        </a>
+									@endif
 								</li>
 							@else
 								<li>
